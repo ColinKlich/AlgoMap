@@ -1,0 +1,28 @@
+.pin {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 50% 0;
+  background: #89CFF0;
+  position: absolute;
+  transform: rotate(-45deg);
+  left: 50%;
+  top: 50%;
+  margin: -15px 0 0 -15px;
+}
+.pin:after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  margin: 8px 0 0 8px;
+  background: #2F2F2F;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.start-pin {
+    background: #00FF00;
+}
+
+.end-pin {
+    background: #FF0000;
+}
