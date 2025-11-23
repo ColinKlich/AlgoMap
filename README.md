@@ -86,3 +86,14 @@ The application will be available at `http://localhost:5173`.
 2.  Search for a location or pan and zoom to the desired area.
 3.  Click on the map to set a start and end point for the pathfinding.
 4.  The application will run the different algorithms and display the results, including the path on the map and performance metrics.
+
+## Running with Docker
+
+This project is fully containerized. To run it with Docker, you'll need to have Docker and Docker Compose installed.
+
+1.  **Build and run the containers:**
+    ```bash
+    docker-compose up --build
+    ```
+
+The application will be available at `http://localhost`.
