@@ -9,4 +9,13 @@ export default defineConfig({
     include: /src\/.*\.jsx?$/,
     exclude: [],
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 })
