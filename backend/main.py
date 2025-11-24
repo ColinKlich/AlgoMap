@@ -41,10 +41,14 @@ def get_graph(lat: float, lon: float):
     global G
     filename = get_graph_filename_from_point(lat, lon)
 
-    if os.path.exists(filename):
-        with open(filename) as f:
+    base_dir = os.path.abspath("data")
+    fullpath = os.path.abspath(os.path.normpath(filename))
+    if not fullpath.startswith(base_dir + os.sep):
+        return {"error": "Access to this file is not allowed."}
+    if os.path.exists(fullpath):
+        with open(fullpath) as f:
             G = nx.node_link_graph(json.load(f), edges="edges")
-        print(f"Loaded graph from {filename}")
+        print(f"Loaded graph from {fullpath}")
     else:
         G = build_graph_from_point(lat, lon)
 
