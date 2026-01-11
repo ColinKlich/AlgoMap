@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: algomap-backend
+spec:
+  selector:
+    app: algomap-backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000

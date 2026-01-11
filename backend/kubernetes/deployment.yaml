@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: algomap-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: algomap-backend
+  template:
+    metadata:
+      labels:
+        app: algomap-backend
+    spec:
+      containers:
+      - name: algomap-backend
+        # your-registry/algomap-backend:latest
+        image: tsilver1/algomap-backend:v1.1
+        ports:
+        - containerPort: 8000
+        volumeMounts:
+        - name: data-volume
+          mountPath: /app/data
+        - name: cache-volume
+          mountPath: /app/cache
+      volumes:
+      # IMPORTANT: hostPath volumes are not recommended for production.
+      # Use a PersistentVolumeClaim or other persistent storage solutions for production.
+      - name: data-volume
+        hostPath:
+          path: /path/to/your/backend/data
+          type: DirectoryOrCreate
+      - name: cache-volume
+        hostPath:
+          path: /path/to/your/backend/cache
+          type: DirectoryOrCreate

@@ -1,0 +1,27 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: algomap-backend
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`algomap-backend.colinklich.com`) && PathPrefix(`/api`)
+      kind: Rule
+      services:
+        - name: algomap-backend
+          port: 80
+      middlewares:
+        - name: strip-api-prefix
+  tls:
+    certResolver: letsencrypt
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-api-prefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /api
