@@ -12,7 +12,7 @@ AlgoMap is a web application that visualizes and compares the performance of dif
 
 ## Tech Stack
 
-*   **Backend:** Python, FastAPI, NetworkX, OSMnx, Geopy
+*   **Backend:** Python, FastAPI, NetworkX, OSMnx, Geopy, Docker, Kubernetes, Tailscale Tunnel
 *   **Frontend:** React, Leaflet.js, Vite
 
 ## Quick Start
