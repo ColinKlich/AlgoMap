@@ -15,6 +15,12 @@ AlgoMap is a web application that visualizes and compares the performance of dif
 *   **Backend:** Python, FastAPI, NetworkX, OSMnx, Geopy, Docker, Kubernetes, Tailscale Tunnel
 *   **Frontend:** React, Leaflet.js, Vite
 
+## Future Improvements
+- kubernetes backend struggles with multiple instances. API must be rewritten to use single POST request instead of 4 GET/POST requests. Otherwise, scaling with multiple pods introduces errors because api requests are sent to different pods.
+
+
+
+
 ## Quick Start
 
 This project includes a `run.sh` script that automates the setup and execution of both the frontend and backend.
