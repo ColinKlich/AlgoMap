@@ -66,8 +66,9 @@ def get_nearest_node(lat: float, lon: float):
             node = node[0]  # Take the first node if it returns a list
         return {"node": node}
     except Exception as e:
+        # Log the detailed error on the server, but do not expose it to the client
         print(f"Error finding nearest node: {e}")
-        return {"node": None, "error": str(e)}
+        return {"node": None, "error": "Internal error while finding nearest node"}
 
 @app.post("/run")
 def run(payload: dict):
