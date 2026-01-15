@@ -25,6 +25,10 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
+
 G = None
 geolocator = Nominatim(user_agent="AlgoMap", timeout=10)
 
