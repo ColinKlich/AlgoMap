@@ -9,6 +9,7 @@ from encoder import CustomJSONEncoder
 def get_graph_filename(place_name):
     return f"data/{place_name.lower().replace(', ', '_').replace(' ', '_')}.json"
 
+# returns graph of points around city
 def build_city_graph(place_name):
     print(f"Downloading: {place_name}")
     G = ox.graph_from_place(place_name, network_type="drive")
@@ -29,6 +30,7 @@ def build_city_graph(place_name):
 def get_graph_filename_from_point(lat, lon):
     return f"data/graph_{lat:.2f}_{lon:.2f}.json"
 
+# returns graph of points around location (lat, lon)
 def build_graph_from_point(lat, lon, distance_km=10):
     print(f"Downloading graph for location: ({lat}, {lon})")
     G = ox.graph_from_point((lat, lon), dist=distance_km * 1000, network_type="drive")
