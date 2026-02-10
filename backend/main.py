@@ -25,6 +25,7 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
+# Health check
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
@@ -32,6 +33,7 @@ def health_check():
 G = None
 geolocator = Nominatim(user_agent="AlgoMap", timeout=10)
 
+# locate user
 @app.get("/geocode")
 def geocode(q: str):
     location = geolocator.geocode(q)
@@ -39,7 +41,7 @@ def geocode(q: str):
         return {"lat": location.latitude, "lon": location.longitude}
     return {"error": "Location not found"}
 
-
+# Download coordinates graph for user location.
 @app.get("/graph")
 def get_graph(lat: float, lon: float):
     global G
@@ -59,7 +61,7 @@ def get_graph(lat: float, lon: float):
     return {"nodes": G.nodes}
 
 
-# In main.py, update the /nearest-node endpoint
+# Find nearest node
 @app.get("/nearest-node")
 def get_nearest_node(lat: float, lon: float):
     if G is None:
